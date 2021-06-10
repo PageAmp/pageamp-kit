@@ -1,0 +1,90 @@
+<lib>
+	<:import src="base.htm"/>
+	<style data-name="grid"
+		:p_gd_maxWidthPx="[[1270]]"
+
+		:p_gd_maxMobilePx="[[480]]"
+		:p_gd_maxPhabletPx="[[736]]"
+		:p_gd_maxTabletPx="[[980]]"
+		:p_gd_maxLaptopPx="[[1366]]"
+		:p_gd_maxDesktopPx="[[1680]]"
+
+		:p_gd_containerPd="0 2.5em"
+		:p_gd_rowPd="0"
+		:p_gd_rowMg="0"
+		:p_gd_colPd="0"
+		:p_gd_colMg="0"
+
+		:p_gd_columns="[[12]]"
+		:p_gd_colWidthPc="[[100 / p_gd_columns]]"
+		:p_gd_getColWidthPc="[[function(n, s) {
+			return 'width: ' + (s / p_gd_columns * n);
+		}]]"
+		:p_gd_getOffsetPc="[[function(n, s) {
+			return 'margin-left: ' + (s / p_gd_columns * n);
+		}]]"
+	>
+		.container {
+			position: relative;
+			width: 100%;
+			max-width: [[p_gd_maxWidthPx]]px;
+			padding: [[p_gd_containerPd]];
+			margin: 0 auto;
+		}
+		.row {
+			position: relative;
+			width: 100%;
+			padding: [[p_gd_rowPd]];
+			margin: [[p_gd_rowMg]];
+		}
+		.row.equalized {
+			display:flex;
+		}
+		.column {
+			width: 100%;
+			float: left;
+			padding: [[p_gd_colPd]];
+			margin: [[p_gd_colMg]];
+			box-sizing: border-box;
+		}
+		@media (min-width: [[p_gd_maxPhabletPx]]px) {
+			.one.column          { [[p_gd_getColWidthPc(1,  100)]]%; }
+			.two.column          { [[p_gd_getColWidthPc(2,  100)]]%; }
+			.three.column        { [[p_gd_getColWidthPc(3,  100)]]%; }
+			.four.column         { [[p_gd_getColWidthPc(4,  100)]]%; }
+			.five.column         { [[p_gd_getColWidthPc(5,  100)]]%; }
+			.six.column          { [[p_gd_getColWidthPc(6,  100)]]%; }
+			.seven.column        { [[p_gd_getColWidthPc(7,  100)]]%; }
+			.eight.column        { [[p_gd_getColWidthPc(8,  100)]]%; }
+			.nine.column         { [[p_gd_getColWidthPc(9,  100)]]%; }
+			.ten.column          { [[p_gd_getColWidthPc(10, 100)]]%; }
+			.eleven.column       { [[p_gd_getColWidthPc(11, 100)]]%; }
+			.twelve.column       { [[p_gd_getColWidthPc(11, 100)]]%; }
+			.offset-by-one.column       { [[p_gd_getOffsetPc(1,  100)]]%; }
+			.offset-by-two.column       { [[p_gd_getOffsetPc(2,  100)]]%; }
+			.offset-by-three.column     { [[p_gd_getOffsetPc(3,  100)]]%; }
+			.offset-by-four.column      { [[p_gd_getOffsetPc(4,  100)]]%; }
+			.offset-by-five.column      { [[p_gd_getOffsetPc(5,  100)]]%; }
+			.offset-by-six.column       { [[p_gd_getOffsetPc(6,  100)]]%; }
+			.offset-by-seven.column     { [[p_gd_getOffsetPc(7,  100)]]%; }
+			.offset-by-eight.column     { [[p_gd_getOffsetPc(8,  100)]]%; }
+			.offset-by-nine.column      { [[p_gd_getOffsetPc(9,  100)]]%; }
+			.offset-by-ten.column       { [[p_gd_getOffsetPc(10, 100)]]%; }
+			.offset-by-eleven.column    { [[p_gd_getOffsetPc(11, 100)]]%; }
+		}
+		.row:after,
+		.u-cf {
+			content: "";
+			display: table;
+			clear: both;
+		}
+	</style>
+
+	<!---<:define tag="pk-container" :c_container/>
+
+	<:define tag="pk-row" :c_row :c_equalized="[[equalized]]"
+	            :equalized="[[false]]"
+	/>
+
+	<:define tag="pk-column" :c_column/>-->
+</lib>

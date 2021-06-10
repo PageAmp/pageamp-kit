@@ -1,0 +1,32 @@
+<lib>
+	<meta name="color-scheme" content="light dark" />
+	<!--- https://developers.google.com/fonts/docs/getting_started -->
+	<!--- https://fonts.google.com/specimen/Open+Sans?query=open+sans#standard-styles -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,600">
+	<style data-name="base"
+		:light_bg="#ffffff"
+		:light_fg="#202124"
+		:dark_bg="#202124"
+		:dark_fg="#e8eaed"
+	>
+		body {
+			padding: 0;
+			margin: 0;
+			font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			background: [[light_bg]];
+			color: [[light_fg]];
+		}
+		h1, h2, h3, h4 {
+			font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+		}
+		@media (prefers-color-scheme: dark) {
+			body {
+				background: [[dark_bg]];
+				color: [[dark_fg]];
+			}
+		}
+	</style>
+</lib>

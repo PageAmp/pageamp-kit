@@ -9,9 +9,12 @@
 		:grid_maxLaptopPx="[[1366]]"
 		:grid_maxDesktopPx="[[1680]]"
 
-		:grid_containerPd="0 2.5em"
+		:grid_containerPd1="0 1.5em"
+		:grid_containerPd2="0 2.5em"
 		:grid_rowPd="0"
 		:grid_rowMg="0"
+		:grid_rowSplitMg1="0"
+		:grid_rowSplitMg2="1em"
 		:grid_colPd1="0"
 		:grid_colPd2="0 1em"
 		:grid_colMg="0"
@@ -29,7 +32,7 @@
 			position: relative;
 			width: 100%;
 			max-width: [[grid_maxWidthPx]]px;
-			padding: [[grid_containerPd]];
+			padding: [[grid_containerPd1]];
 			margin: 0 auto;
 		}
 		.pk-row {
@@ -41,6 +44,14 @@
 		.pk-row.equalized {
 			display:flex;
 		}
+		.pk-row-split {
+			height: 1;
+			border: 0;
+			margin-top: 3em;
+			margin-left: [[grid_rowSplitMg1]];
+			margin-right: [[grid_rowSplitMg1]];
+			background: rgba(0,0,0,.1);
+		}
 		.pk-column {
 			width: 100%;
 			float: left;
@@ -49,6 +60,8 @@
 			box-sizing: border-box;
 		}
 		@media (min-width: [[grid_maxPhabletPx]]px) {
+			.pk-grid { padding: [[grid_containerPd2]]; }
+			.pk-row-split { margin-left: [[grid_rowSplitMg2]]; margin-right: [[grid_rowSplitMg2]]; }
 			.pk-column { padding: [[grid_colPd2]]; }
 			.one.pk-column          { [[grid_getColWidthPc(1,  100)]]%; }
 			.two.pk-column          { [[grid_getColWidthPc(2,  100)]]%; }

@@ -1,0 +1,35 @@
+<lib>
+	<!--- https://ace.c9.io/#nav=embedding -->
+	<:import src="base.htm"/>
+	<!-- <script src="https://pagecdn.io/lib/ace/1.4.12/ace.min.js"></script> -->
+	<script src="/.pageamp/lib/pagekit/res/ace-editor/src-min-noconflict/ace.js"></script>
+	<style type="text/css" media="screen">
+		.pk-ace-editor { 
+			width: 100%;
+		}
+	</style>
+
+	<:define tag="pk-ace-editor" :editorid="editor">
+		<div id="[[editorid]]" class="pk-ace-editor"><:slot name="default"/></div>
+		<script>
+			var editor = ace.edit("[[editorid]]", {
+				theme: "ace/theme/monokai",
+		        mode: "ace/mode/html",
+				maxLines: 30,
+				wrap: true,
+				autoScrollEditorIntoView: true,
+				// showLineNumbers: false,
+				// showFoldWidgets: false,
+				showGutter: false,
+				showPrintMargin: false,
+				/* https://github.com/ajaxorg/ace/issues/266 */
+				readOnly: true,
+				highlightActiveLine: false,
+				highlightGutterLine: false
+			});
+			editor.renderer.$cursorLayer.element.style.opacity=0;
+			// https://ace.c9.io/api/virtual_renderer.html#VirtualRenderer.setPadding
+			editor.renderer.setPadding(20);
+		</script>
+	</:define>
+</lib>

@@ -42,7 +42,6 @@
 			margin: [[grid_rowMg]];
 		}
 		.pk-row.equalized {
-			display:flex;
 		}
 		.pk-row-split {
 			height: 1;
@@ -61,6 +60,7 @@
 		}
 		@media (min-width: [[grid_maxPhabletPx]]px) {
 			.pk-grid { padding: [[grid_containerPd2]]; }
+			.pk-row.equalized { display:flex; }
 			.pk-row-split { margin-left: [[grid_rowSplitMg2]]; margin-right: [[grid_rowSplitMg2]]; }
 			.pk-column { padding: [[grid_colPd2]]; }
 			.one.pk-column          { [[grid_getColWidthPc(1,  100)]]%; }

@@ -1,9 +1,11 @@
 <lib>
 	<meta name="color-scheme" content="light dark" />
+	<!--- https://fonts.google.com -->
 	<!--- https://developers.google.com/fonts/docs/getting_started -->
 	<!--- https://fonts.google.com/specimen/Open+Sans?query=open+sans#standard-styles -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,600">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster:300,400,700">
 	<style data-name="base"
 		:light_bg="#ffffff"
 		:light_fg="#202124"
@@ -14,13 +16,28 @@
 			padding: 0;
 			margin: 0;
 			font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-			font-size: 16px;
+			font-size: 17px;
 			line-height: 1.5;
 			background: [[light_bg]];
 			color: [[light_fg]];
 		}
+		* {
+			box-sizing: border-box;
+		}
 		h1, h2, h3, h4 {
 			font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-weight: 300;
+			color: #155799;
+			/* opacity: .6; */
+		}
+		p {
+			color: rgba(0,0,0,.75);
+		}
+		/* https://www.w3schools.com/Css/css_link.asp */
+		a {
+			font-weight: 300;
+			color: #0e8bbf;
+			white-space: nowrap;
 		}
 		@media (prefers-color-scheme: dark) {
 			body {

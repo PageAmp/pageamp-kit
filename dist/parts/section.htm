@@ -1,10 +1,24 @@
 <lib>
 	<:import src="base.htm"/>
 	<:import src="grid.htm"/>
-	<style data-name="section"></style>
+	<style data-name="section">
+		.pk-section {
+		}
+		.pk-section .pk-row {
+			padding-top: 1em;
+		}
+		.pk-section .pk-row .pk-column {
+			padding-top: 1em;
+		}
+		@media (min-width: 480px) {
+			.pk-section .pk-row {
+				padding-top: 2em;
+			}
+		}
+	</style>
 
-	<:define tag="pk-section" class="container">
-		<div class="row">
+	<:define tag="pk-section" class="pk-section pk-grid">
+		<div class="pk-row">
 			<:slot name="default"/>
 		</div>
 	</:define>

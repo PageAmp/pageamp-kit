@@ -1,90 +1,84 @@
 <lib>
 	<:import src="base.htm"/>
 	<style data-name="grid"
-		:p_gd_maxWidthPx="[[1270]]"
+		:grid_maxWidthPx="[[1270]]"
 
-		:p_gd_maxMobilePx="[[480]]"
-		:p_gd_maxPhabletPx="[[736]]"
-		:p_gd_maxTabletPx="[[980]]"
-		:p_gd_maxLaptopPx="[[1366]]"
-		:p_gd_maxDesktopPx="[[1680]]"
+		:grid_maxMobilePx="[[480]]"
+		:grid_maxPhabletPx="[[736]]"
+		:grid_maxTabletPx="[[980]]"
+		:grid_maxLaptopPx="[[1366]]"
+		:grid_maxDesktopPx="[[1680]]"
 
-		:p_gd_containerPd="0 2.5em"
-		:p_gd_rowPd="0"
-		:p_gd_rowMg="0"
-		:p_gd_colPd="0"
-		:p_gd_colMg="0"
+		:grid_containerPd="0 2.5em"
+		:grid_rowPd="0"
+		:grid_rowMg="0"
+		:grid_colPd1="0"
+		:grid_colPd2="0 1em"
+		:grid_colMg="0"
 
-		:p_gd_columns="[[12]]"
-		:p_gd_colWidthPc="[[100 / p_gd_columns]]"
-		:p_gd_getColWidthPc="[[function(n, s) {
-			return 'width: ' + (s / p_gd_columns * n);
+		:grid_columns="[[12]]"
+		:grid_colWidthPc="[[100 / grid_columns]]"
+		:grid_getColWidthPc="[[function(n, s) {
+			return 'width: ' + (s / grid_columns * n);
 		}]]"
-		:p_gd_getOffsetPc="[[function(n, s) {
-			return 'margin-left: ' + (s / p_gd_columns * n);
+		:grid_getOffsetPc="[[function(n, s) {
+			return 'margin-left: ' + (s / grid_columns * n);
 		}]]"
 	>
-		.container {
+		.pk-grid {
 			position: relative;
 			width: 100%;
-			max-width: [[p_gd_maxWidthPx]]px;
-			padding: [[p_gd_containerPd]];
+			max-width: [[grid_maxWidthPx]]px;
+			padding: [[grid_containerPd]];
 			margin: 0 auto;
 		}
-		.row {
+		.pk-row {
 			position: relative;
 			width: 100%;
-			padding: [[p_gd_rowPd]];
-			margin: [[p_gd_rowMg]];
+			padding: [[grid_rowPd]];
+			margin: [[grid_rowMg]];
 		}
-		.row.equalized {
+		.pk-row.equalized {
 			display:flex;
 		}
-		.column {
+		.pk-column {
 			width: 100%;
 			float: left;
-			padding: [[p_gd_colPd]];
-			margin: [[p_gd_colMg]];
+			padding: [[grid_colPd1]];
+			margin: [[grid_colMg]];
 			box-sizing: border-box;
 		}
-		@media (min-width: [[p_gd_maxPhabletPx]]px) {
-			.one.column          { [[p_gd_getColWidthPc(1,  100)]]%; }
-			.two.column          { [[p_gd_getColWidthPc(2,  100)]]%; }
-			.three.column        { [[p_gd_getColWidthPc(3,  100)]]%; }
-			.four.column         { [[p_gd_getColWidthPc(4,  100)]]%; }
-			.five.column         { [[p_gd_getColWidthPc(5,  100)]]%; }
-			.six.column          { [[p_gd_getColWidthPc(6,  100)]]%; }
-			.seven.column        { [[p_gd_getColWidthPc(7,  100)]]%; }
-			.eight.column        { [[p_gd_getColWidthPc(8,  100)]]%; }
-			.nine.column         { [[p_gd_getColWidthPc(9,  100)]]%; }
-			.ten.column          { [[p_gd_getColWidthPc(10, 100)]]%; }
-			.eleven.column       { [[p_gd_getColWidthPc(11, 100)]]%; }
-			.twelve.column       { [[p_gd_getColWidthPc(11, 100)]]%; }
-			.offset-by-one.column       { [[p_gd_getOffsetPc(1,  100)]]%; }
-			.offset-by-two.column       { [[p_gd_getOffsetPc(2,  100)]]%; }
-			.offset-by-three.column     { [[p_gd_getOffsetPc(3,  100)]]%; }
-			.offset-by-four.column      { [[p_gd_getOffsetPc(4,  100)]]%; }
-			.offset-by-five.column      { [[p_gd_getOffsetPc(5,  100)]]%; }
-			.offset-by-six.column       { [[p_gd_getOffsetPc(6,  100)]]%; }
-			.offset-by-seven.column     { [[p_gd_getOffsetPc(7,  100)]]%; }
-			.offset-by-eight.column     { [[p_gd_getOffsetPc(8,  100)]]%; }
-			.offset-by-nine.column      { [[p_gd_getOffsetPc(9,  100)]]%; }
-			.offset-by-ten.column       { [[p_gd_getOffsetPc(10, 100)]]%; }
-			.offset-by-eleven.column    { [[p_gd_getOffsetPc(11, 100)]]%; }
+		@media (min-width: [[grid_maxPhabletPx]]px) {
+			.pk-column { padding: [[grid_colPd2]]; }
+			.one.pk-column          { [[grid_getColWidthPc(1,  100)]]%; }
+			.two.pk-column          { [[grid_getColWidthPc(2,  100)]]%; }
+			.three.pk-column        { [[grid_getColWidthPc(3,  100)]]%; }
+			.four.pk-column         { [[grid_getColWidthPc(4,  100)]]%; }
+			.five.pk-column         { [[grid_getColWidthPc(5,  100)]]%; }
+			.six.pk-column          { [[grid_getColWidthPc(6,  100)]]%; }
+			.seven.pk-column        { [[grid_getColWidthPc(7,  100)]]%; }
+			.eight.pk-column        { [[grid_getColWidthPc(8,  100)]]%; }
+			.nine.pk-column         { [[grid_getColWidthPc(9,  100)]]%; }
+			.ten.pk-column          { [[grid_getColWidthPc(10, 100)]]%; }
+			.eleven.pk-column       { [[grid_getColWidthPc(11, 100)]]%; }
+			.twelve.pk-column       { [[grid_getColWidthPc(11, 100)]]%; }
+			.offset-by-one.pk-column       { [[grid_getOffsetPc(1,  100)]]%; }
+			.offset-by-two.pk-column       { [[grid_getOffsetPc(2,  100)]]%; }
+			.offset-by-three.pk-column     { [[grid_getOffsetPc(3,  100)]]%; }
+			.offset-by-four.pk-column      { [[grid_getOffsetPc(4,  100)]]%; }
+			.offset-by-five.pk-column      { [[grid_getOffsetPc(5,  100)]]%; }
+			.offset-by-six.pk-column       { [[grid_getOffsetPc(6,  100)]]%; }
+			.offset-by-seven.pk-column     { [[grid_getOffsetPc(7,  100)]]%; }
+			.offset-by-eight.pk-column     { [[grid_getOffsetPc(8,  100)]]%; }
+			.offset-by-nine.pk-column      { [[grid_getOffsetPc(9,  100)]]%; }
+			.offset-by-ten.pk-column       { [[grid_getOffsetPc(10, 100)]]%; }
+			.offset-by-eleven.pk-column    { [[grid_getOffsetPc(11, 100)]]%; }
 		}
-		.row:after,
+		.pk-row:after,
 		.u-cf {
 			content: "";
 			display: table;
 			clear: both;
 		}
 	</style>
-
-	<!---<:define tag="pk-container" :c_container/>
-
-	<:define tag="pk-row" :c_row :c_equalized="[[equalized]]"
-	            :equalized="[[false]]"
-	/>
-
-	<:define tag="pk-column" :c_column/>-->
 </lib>

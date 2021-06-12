@@ -1,6 +1,13 @@
-<lib>
+<lib
+	:pk_base_lightBg="#ffffff"
+	:pk_base_lightFg="#202124"
+	:pk_base_darkBg="#202124"
+	:pk_base_darkFg="#e8eaed"
+	:pk_base_fontSizePx=[[17]]
+	:pk_base_roundnessPx=[[3]]
+>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<meta name="color-scheme" content="light dark" />
+	<!-- <meta name="color-scheme" content="light dark" /> -->
 	<!--- https://fonts.google.com -->
 	<!--- https://developers.google.com/fonts/docs/getting_started -->
 	<!--- https://fonts.google.com/specimen/Open+Sans?query=open+sans#standard-styles -->
@@ -8,20 +15,15 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster:300,400,700">
-	<style data-name="base"
-		:light_bg="#ffffff"
-		:light_fg="#202124"
-		:dark_bg="#202124"
-		:dark_fg="#e8eaed"
-	>
+	<style data-name="base">
 		body {
 			padding: 0;
 			margin: 0;
 			font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
-			font-size: 17px;
+			font-size: [[pk_base_fontSizePx]]px;
 			line-height: 1.5;
-			background: [[light_bg]];
-			color: [[light_fg]];
+			background: [[pk_base_lightBg]];
+			color: [[pk_base_lightFg]];
 		}
 		* {
 			box-sizing: border-box;
@@ -59,8 +61,8 @@
 		}
 		@media (prefers-color-scheme: dark) {
 			body {
-				background: [[dark_bg]];
-				color: [[dark_fg]];
+				background: [[pk_base_darkBg]];
+				color: [[pk_base_darkFg]];
 			}
 		}
 	</style>

@@ -1,0 +1,129 @@
+<lib>
+	<:import :src="code.htm"/>
+	<style data-name="markdown">
+		.pk-markdown {
+		}
+		.pk-markdown-note {
+			display: block;
+			color: [[k_light ? '#888' : '#888']];
+			padding: .5em 0 .5em .85em;
+			border-left: 4px solid [[k_light ? '#ddd' : '#666']];
+			margin-top: -.5em;
+			margin-bottom: -.5em;
+		}
+	</style>
+
+	<:define tag="pk-markdown" class="pk-markdown"
+        :text=""
+        :headings="[[ [] ]]"
+        :on_text="[[(text):function() {
+            var hh = [];
+
+            // escape embedded markup
+            var s = string(text).split('<').join('&lt;');
+
+            // headings
+            s = regex('(#+)\\s+(.+?)\\n+', 'g').map(s, function(re) {
+                var n = re.matched(1).length;
+                var s = trim(re.matched(2));
+                var id = lowerCase(regex('\\s+', 'g').replace(s, '-'));
+                hh.push(id);
+                return '<'+'p><'+'/p>'
+						+ '<'+'h'+n+'>' + s + '<'+'/h'+n+'>\n';
+            });
+
+            // notes
+            s = regex('\\n>\\s*(.*?)\\n', 'mg').map(s, function(re) {
+                return '<'+'span class=&quot;pk-markdown-note&quot;>'
+                     + re.matched(1)
+                     + '<'+'/span>';
+            });
+
+			// links
+			s = regex('\\[(.*?)\\]\\((.*?)\\)', 'mg').map(s, function(re) {
+				return '<'+'a href=&quot;'+re.matched(2)+'&quot;>'+re.matched(1)+'<'+'/a>';
+			});
+
+            // bullet list
+            var pos = null;
+            s = regex('(\\n\\s*)(-|\\*)\\s([^\\n]*)', 'mg').map(s, function(re) {
+                var s = '';
+                var p = re.matchedPos();
+                if (pos == null || (pos.pos + pos.len) < p.pos) {
+                    s = '\n<'+'ul>';
+                }
+                pos = p;
+                return s + '<'+'li>' + re.matched(3) + '<'+'/li>';
+            });
+            s = regex('(<'+'\\/li>\\n)', 'mg').map(s, function(re) {
+                return '<'+'/li><'+'/ul>\n\n';
+            });
+
+            // paragraphs
+            s = regex('\\n+', 'g').map(s, function(re) {
+                return '<'+'p><'+'/p>';
+            });
+
+            // bold
+            s = regex('\\*\\*(.+?)\\*\\*', 'g').map(s, function(re) {
+                return '<'+'b>' + re.matched(1) + '<'+'/b>';
+            });
+
+            // code fence
+            s = regex('```(.+?)```', 'gm').map(s, function(re) {
+                var s = re.matched(1);
+                s = regex('<'+'p><'+'\\/p>', 'gm').replace(s, '\n');
+                var l = s.split('\n');
+                var lang = trim(l.length > 0 ? l.shift() : '');
+                s = l.join('\n');
+                s = string(s).split('&lt;').join('&amp;lt;');
+
+				// PageAmp highlight {
+				s = s.split('\n').join('(/)');
+				s = regex('&amp;lt;([\\w\\/:].+?)>', 'gm').map(s, function(re) {
+					var s = re.matched(1);
+
+					s = regex('(\\S+)\\s*=\\s*(&quot;.*?&quot;)', 'g')
+					.map(s, function(re) {
+						var s = re.matched(2);
+						return '<' + 'span class=\'pk-code-arg\'>'
+								+ re.matched(1)
+								+ '<' + '/span>'
+								+ '<' + 'span class=\'pk-code-base\'>'
+								+ '='
+								+ '<' + '/span>'
+								+ '<' + 'span class=\'pk-code-string\'>'
+								+ s
+								+ '<' + '/span>';
+					});
+
+					return '<' + 'span class=\'pk-code-keyword\'>'
+							+ '&amp;lt;' + s + '>'
+							+ '<' + '/span>';
+				});
+				s = regex('(&dollar;(data)?\\{.*?\\})', 'g')
+				.map(s, function(re) {
+					return '<' + 'span class=\'pk-code-expr\'>'
+							+ re.matched(1)
+							+ '<' + '/span>';
+				});
+				s = s.split('(/)').join('\n');
+				// } PageAmp highlight
+
+                return '<' +'pre><'+'code class=\'pk-codeblock\'>'
+                        + s + '<'+'/code><'+'/pre>';
+            });
+
+            // code
+            s = regex('`(.+?)`', 'g').map(s, function(re) {
+                var s = re.matched(1);
+                s = string(s).split('&lt;').join('&amp;lt;');
+                return '<'+'code>' + s + '<'+'/code>';
+            });
+
+            // apply
+            headings = hh;
+            dom.innerHTML = s;
+        }]]"
+	/>
+</lib>

@@ -2,11 +2,10 @@
 	<:import src="base.htm"/>
 	<style data-name="banner">
 		.pk-banner {
+			position: relative;
 			font-size: 120%;
 			text-align: center;
 			padding: .5em 2em 1.2em 2em;
-			background: #1B5A94;
-			background-image: linear-gradient(120deg, #155799, #159099);
 			color: #fff;
 		}
 		.pk-banner h1 {
@@ -26,7 +25,25 @@
 			color: #fff;
 			font-weight: 400;
 		}
+		.pk-banner-backdrop,
+		.pk-banner-background {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+		}
+		.pk-banner-background {
+			background: #1B5A94;
+			background-image: linear-gradient(120deg, #155799, #159099);
+		}
 	</style>
 
-	<:define tag="pk-banner" class="pk-banner"></:define>
+	<!-- <:define tag="pk-banner" class="pk-banner"/> -->
+	
+	<:define tag="pk-banner" style="position:relative">
+	<div class="pk-banner-backdrop"/>
+	<div class="pk-banner-background"/>
+	<div class="pk-banner"><:slot name="default"/></div>
+	</:define>
 </lib>

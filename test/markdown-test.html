@@ -1,11 +1,20 @@
-<lib>
-	<:import src="base.htm"/>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+
+	<style>
+		body {
+			font-family: sans-serif;
+			margin: 0;
+		}
+	</style>
+
 	<style data-name="markdown">
 		.pk-markdown {
 			line-height: 1.5em;
-			/* padding: 1em; */
-			/* border: 1px solid rgba(0,0,0,.15); */
-			margin: 0;
+			padding: 1em;
+			border: 1px solid rgba(0,0,0,.15);
 		}
 		.pk-markdown code {
 			color: #fff;
@@ -16,7 +25,7 @@
 			vertical-align: 5%;
 		}
 		.pk-markdown code .pk-keyword {
-			color: #ff6a76;
+			color: #F72871;
 		}
 		.pk-markdown code .pk-attribute {
 			color: #A2DD3E;
@@ -26,10 +35,6 @@
 		}
 		.pk-markdown code .pk-expression {
 			color: #6AD9EF;
-		}
-		.pk-markdown pre {
-			margin: 0;
-			white-space: pre-wrap;
 		}
 		.pk-markdown pre > code {
 			display: block;
@@ -50,6 +55,8 @@
 			var s = '\n' + text;
 			s = s.split('<').join('&lt;');
 			// we replace newlines to work better with regexs
+			// double newlines will eventually turn into <p></p>
+			// single newlines will eventually turn into <br/>
 			s = regex('(\\n){2,}', 'mg').map(s, (re) -> '<br2>');
 			s = regex('(\\n)', 'mg').map(s, (re) -> '<br1>');
 
@@ -67,7 +74,6 @@
 			s = doEmphasis(s);
 
 			// post process
-			s = regex('^(\\s*<br.>)', 'mg').map(s, (re) -> '');
 			s = regex('<br2>', 'mg').map(s, (re) -> '<p></p>\n');
 			s = regex('<br1>', 'mg').map(s, (re) -> '<br/>\n');
 			
@@ -132,6 +138,43 @@
 			s = s.split(']' + ']').join('</span>]' + ']');
 			return s;
 		}]]
-		
 	/>
-</lib>
+
+</head>
+<body>
+<pk-markdown :name="markdown" :text='
+
+# This is an <h1> tag
+## This is an <h2> tag
+###### This is an <h6> tag
+
+*This text will be italic*
+_This will also be italic_
+
+**This text will be bold**
+__This will also be bold__
+
+_You **can** combine them_
+
+I think you should use an
+`<addr>` element here instead.
+
+```
+<html :color="blue"
+      :note="ok">
+<head>
+	<style>
+		body {
+			color: &#91;[color]];
+		}
+	</style>
+</head>
+<body :ev_click="&#91;[color = (color == &apos;red&apos; ? &apos;blue&apos; : &apos;red&apos;)]]">
+	Hello &#91;[color]] world! Click to change planet.
+</body>
+</html>
+```
+ok
+'/>
+</body>
+</html>

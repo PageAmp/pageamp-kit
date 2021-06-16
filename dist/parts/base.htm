@@ -1,17 +1,25 @@
 <lib
 	:pk_base_lightBg="#ffffff"
 	:pk_base_lightFg="#202124"
-	:pk_base_darkBg="#202124"
+	:pk_base_lightBd="rgba(0,0,0,.15)"
+	:pk_base_lightH="#155799"
+	:pk_base_lightP="[[cssColorOffset(pk_base_lightFg, 0, 1, .85)]]"
+	:pk_base_lightA="#0e8bbf"
+	:pk_base_darkBg="[[cssColorOffset('#202124', -10)]]"
 	:pk_base_darkFg="#e8eaed"
+	:pk_base_darkBd="rgba(255,255,255,.1)"
+	:pk_base_darkH="[[cssColorOffset(pk_base_lightH, 110)]]"
+	:pk_base_darkP="[[cssColorOffset(pk_base_darkFg, 0, 1, .95)]]"
+	:pk_base_darkA="[[cssColorOffset(pk_base_lightA, 50)]]"
 	:pk_base_fontSizePx=[[17]]
 	:pk_base_roundnessPx=[[3]]
 >
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<!-- <meta name="color-scheme" content="light dark" /> -->
+	<meta name="color-scheme" content="light dark" />
 	<!--- https://fonts.google.com -->
 	<!--- https://developers.google.com/fonts/docs/getting_started -->
 	<!--- https://fonts.google.com/specimen/Open+Sans?query=open+sans#standard-styles -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster:300,400,700">
@@ -31,22 +39,22 @@
 		h1, h2, h3, h4 {
 			font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 			font-weight: 300;
-			color: #155799;
+			color: [[pk_base_lightH]];
 		}
-		h3 {
+		/* h3 {
 			color: #054789;
-		}
+		} */
 		h4 {
 			font-weight: 400;
 			opacity: .75;
 		}
 		p {
-			color: rgba(0,0,0,.75);
+			color: [[pk_base_lightP]];
 		}
 		/* https://www.w3schools.com/Css/css_link.asp */
 		a {
 			font-weight: 300;
-			color: #0e8bbf;
+			color: [[pk_base_lightA]];
 			white-space: nowrap;
 		}
 		code {
@@ -59,11 +67,21 @@
 			background: #203E5A;
 			vertical-align: 5%;
 		}
-		/* @media (prefers-color-scheme: dark) {
+		@media (prefers-color-scheme: dark) {
 			body {
 				background: [[pk_base_darkBg]];
 				color: [[pk_base_darkFg]];
 			}
-		} */
+			h1, h2, h3, h4 {
+				color: [[pk_base_darkH]];
+			}
+			p {
+				color: [[pk_base_darkP, 10]];
+				font-weight: 300;
+			}
+			a {
+				color: [[pk_base_darkA]];
+			}
+		}
 	</style>
 </lib>

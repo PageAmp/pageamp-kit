@@ -50,7 +50,7 @@
 			margin-bottom: .5em;
 			margin-left: [[grid_rowSplitMg1]];
 			margin-right: [[grid_rowSplitMg1]];
-			background: rgba(0,0,0,.15);
+			background: [[pk_base_lightBd]];
 		}
 		.pk-column {
 			width: 100%;
@@ -96,6 +96,11 @@
 			content: "";
 			display: table;
 			clear: both;
+		}
+		@media (prefers-color-scheme: dark) {
+			.pk-row-split {
+				background: [[pk_base_darkBd]];
+			}
 		}
 	</style>
 </lib>

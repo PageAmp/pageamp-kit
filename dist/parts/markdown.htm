@@ -1,6 +1,6 @@
 <lib>
 	<:import src="base.htm"/>
-	<style data-name="markdown">
+	<style data-name="markdown" :pk_markdown_codeBg="#203E5A">
 		.pk-markdown {
 			line-height: 1.5em;
 			/* padding: 1em; */
@@ -9,7 +9,7 @@
 		}
 		.pk-markdown code {
 			color: #fff;
-			background: #203E5A;
+			background: [[pk_pk_markdown_codeBg]];
 			padding: .15em .3em;
 			border-radius: 3px;
 			margin: 0 .2em;
@@ -29,7 +29,7 @@
 		}
 		.pk-markdown pre {
 			margin: 0;
-			white-space: pre-wrap;
+			/* white-space: pre-wrap; */
 		}
 		.pk-markdown pre > code {
 			display: block;
@@ -37,6 +37,13 @@
 			padding: 1.2em 1.6em;
 			border-radius: 0;
 			margin: 0;
+			overflow-x: auto;
+		}
+		@media (prefers-color-scheme: dark) {
+			.pk-markdown code {
+				color: #f4f4f4;
+				background: [[cssColorOffset(pk_markdown_codeBg, 20, 1.5)]];
+			}
 		}
 	</style>
 

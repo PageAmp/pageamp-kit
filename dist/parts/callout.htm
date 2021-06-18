@@ -1,6 +1,6 @@
 <lib>
 	<style data-name="callout"
-			:pk_callout_lightA="[[cssColorOffset(pk_base_lightFg, -10)]]"
+			:pk_callout_lightA="[[cssColorOffset(pk_base_lightFg, -10, 1, 1)]]"
 			:pk_callout_darkA="[[pk_base_darkFg]]"
 	>
 		.pk-callout {
@@ -12,10 +12,6 @@
 			border: 1px solid [[cssColorOffset(pk_base_lightH, 0, 1, .15)]];
 			color: [[pk_base_lightH]];
 			background: [[cssColorOffset(pk_base_lightH, 0, 1, .05)]]
-		}
-		.pk-callout a {
-			font-weight: 400;
-			color: [[pk_callout_lightA]];
 		}
 		@media (prefers-color-scheme: dark) {
 			.pk-callout {

@@ -5,12 +5,12 @@
 	:pk_base_lightH="#155799"
 	:pk_base_lightP="[[cssColorOffset(pk_base_lightFg, 0, 1, .85)]]"
 	:pk_base_lightA="#0e8bbf"
-	:pk_base_darkBg="[[cssColorOffset('#202124', -10)]]"
+	:pk_base_darkBg="[[cssColorOffset('#202124', -10, 1, 1)]]"
 	:pk_base_darkFg="#e8eaed"
 	:pk_base_darkBd="rgba(255,255,255,.1)"
-	:pk_base_darkH="[[cssColorOffset(pk_base_lightH, 110)]]"
+	:pk_base_darkH="[[cssColorOffset(pk_base_lightH, 110, 1, 1)]]"
 	:pk_base_darkP="[[cssColorOffset(pk_base_darkFg, 0, 1, .95)]]"
-	:pk_base_darkA="[[cssColorOffset(pk_base_lightA, 50)]]"
+	:pk_base_darkA="[[cssColorOffset(pk_base_lightA, 50, 1, 1)]]"
 	:pk_base_fontSizePx=[[17]]
 	:pk_base_roundnessPx=[[3]]
 >
@@ -76,7 +76,7 @@
 				color: [[pk_base_darkH]];
 			}
 			p {
-				color: [[pk_base_darkP, 10]];
+				color: [[pk_base_darkP]];
 				font-weight: 300;
 			}
 			a {

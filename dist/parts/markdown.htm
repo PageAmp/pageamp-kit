@@ -41,7 +41,7 @@
 		@media (prefers-color-scheme: dark) {
 			.pk-markdown code {
 				color: #f4f4f4;
-				background: [[cssColorOffset(pk_markdown_codeBg, 20, 1.5)]];
+				background: [[cssColorOffset(pk_markdown_codeBg, 20, 1.5, 1)]];
 			}
 		}
 	</style>
@@ -124,7 +124,7 @@
 				// matches tags
 				var slash = re.matched(1) != null ? re.matched(1) : '';
 				var s = re.matched(2);
-				s = regex('([\\w:]+)\\s*=\\s*(".*?")', 'g').map(s, (re) -> {
+				s = regex('([\\w:\\-]+)\\s*=\\s*(".*?")', 'g').map(s, (re) -> {
 					// matches attributes
 					var k = re.matched(1);
 					var v = re.matched(2);

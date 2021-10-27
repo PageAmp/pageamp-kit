@@ -1,0 +1,80 @@
+<lib>
+	<!--- <style>
+		div.navbar-nav {
+			gap: 12px;
+		}
+	</style>-->
+	<!--- https://getbootstrap.com/docs/5.0/components/navbar/ -->
+	<:define tag="bs-navbar" class="bg-[[theme]]"
+		:brand=""
+
+		:searchTarget=[[null]]
+		:searchPlaceholder="Search"
+		:searchButtonLabel="Search"
+		:searchButtonType="primary"
+
+		:theme="light"
+		:expandSize="md"
+
+		:navbarId=[[dom.getAttribute('data-pa-id')]]
+	>
+		<div class="container bg-[[theme]]">
+			<nav class="navbar navbar-expand-[[expandSize]] navbar-[[theme]] bg-[[theme]]">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#"><:slot name="brand"/>[[brand]]</a>
+					<button class="navbar-toggler" type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#[['navbar-content-' + navbarId]]"
+						aria-controls="[['navbar-content-' + navbarId]]"
+						aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div id="[['navbar-content-' + navbarId]]"
+						class="collapse navbar-collapse">
+						<ul class="navbar-nav me-auto mb-2 mb-[[expandSize]]-0">
+							<:slot name="default"/>
+						</ul>
+						<div class="navbar-nav d-flex">
+							<:slot name="right"/>
+							<form class="d-flex" action="[[searchTarget]]"
+								:class-dNone="[[searchTarget==null]]">
+								<input class="form-control me-2" type="search"
+									placeholder="[[searchPlaceholder]]"
+									aria-label="[[searchPlaceholder]]">
+								<button class="btn btn-[[searchButtonType]]"
+									type="submit">[[searchButtonLabel]]</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</:define>
+
+	<:define tag="bs-navbar-link:li" class="nav-item"
+		:label=""
+		:href="#"
+	>
+		<a class="nav-link" href="[[href]]"><:slot name="default"/>[[label]]</a>
+	</:define>
+
+	<:define tag="bs-navbar-dropdown:li" class="nav-item dropdown"
+		:aka="dropdown"
+		:label="[[selection]]"
+		:selection=""
+		:dropdownId=[['dropdown-' + dom.getAttribute('data-pa-id')]]
+	>
+		<a id=[[dropdownId]]
+			class="nav-link dropdown-toggle"
+			href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+			[[label]]<:slot name="label"/><!---
+				BUG: if [[label]] is after <:slot>, it isn't updated client-side
+			-->
+		</a>
+		<ul class="dropdown-menu" aria-labelledby=[[dropdownId]]>
+			<:slot name="default"/>
+		</ul>
+	</:define>
+
+</lib>
